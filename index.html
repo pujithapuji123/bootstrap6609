@@ -1,0 +1,132 @@
+<html>
+
+    <head>
+    <title>Shopping Cart </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+     <h1><mark>Bootstrap Framework</mark></h1><br>  
+    <h1><mark>Login</mark></h1>
+        <form onsubmit="return login">
+            <input type="text" id="username" placeholder="Username" required=""><br>
+            <input type="password" id="password" placeholder="Password" required=""><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegistration()"><mark>Register here</mark></a></p>
+    </div>
+
+
+	<div  class="text-white text-center bg-success">
+        <h1><mark>Register</mark></h1>
+
+        <form onsubmit="return register()">
+            <input type="text" id="regUsername" placeholder="Username" required=""><br>
+            <input type="password" id="regPassword" placeholder="Password" required=""><br>
+            <input type="date" id="date of birth" placeholder="dateofbirth" required=""><br>
+            <input type="email" id="email" placeholder="email" required=""><br>
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="#" onclick="showLogin()"><mark>Login here</mark></a></p>
+    </div>
+	<div id="main-section" class="hiden">
+        <h1><mark>Shopping Cart</mark></h1>
+        <div class="hidden">
+        <h1>Shopping Cart</h1>
+
+	<div class="products">
+        <div class="bg-secondary">
+            <h2>watch</h2>
+            <p>Price: 1500rs</p>
+            <img src="watch.png" width="200px" height="200px">
+            <p>Introducing the Titan Raga Delight Metal Strap Watch, a perfect blend of elegance and delightful charm.
+                • The square dial exudes a captivating and charming allure, making a bold statement on your wrist.
+                • Crafted with a metal case material, this watch offers durability and a sleek appearance.
+                • With a case thickness of 7.85 mm, it strikes the perfect balance between slimness and presence on your wrist.</p>
+            <button class="add-to-cart" onclick="addToCart('watch', 1500)">Add to Cart</button>
+        </div>
+
+        <div class="bg-warning">
+            <h2>bagpack</h2>
+            <p>Price: 500rs</p>
+            <img src="bagpack.png" width="200px" height="200px">
+            <p>Fit Type: regular
+                Innovative Design: AirCase Laptop Backpack is made of Premium Vegan
+                 Leather for your 15.6 Inch Laptop. 
+                This Laptop Backpack has 2 Front Pocket and 2 Main Compartment for Laptop, Tablet and other 
+                Main compartment for wallets dairy, clothes, etc.
+                 There is two way Cortical Tail Zipper with leather pull tail, Fashionable and Novel, keeping up with the current trend.</p>
+            <button class="add-to-cart" onclick="addToCart('bagpack', 500)">Add to Cart</button>
+        </div>
+        <div class="bg-dark">
+            <h2>phone</h2>
+            <p>Price:105500rs</p>
+            <img src="phone.png" width="200px" height="200px">
+            <p>5G Connectivity (SA / NSA): More spectrum bands supported by a handset would provide wider 5G connectivity across markets.
+                Enhanced Coverage: Handset features that can increase the time spent on 5G technology.
+                Superfast 4G: Features that enhance speeds even in 4G coverage.</p>
+            <button class="add-to-cart" onclick="addToCart('phone', 105500)">Add to Cart</button>
+        </div>
+        <div class="bg-danger">
+            <h2>kurti</h2>
+            <p>Price: 700rs</p>
+            <img src="kurti.png" width="200px" height="200px" >
+            Style is a way to say who you are without having to speak try trendy naira cut 
+            blue full sleeves kurti in georgette with floral prints on it.
+This featured casual wear kurti avaiable ready-to-wear in M & L size and has extra 2 inches of margin to
+ adjust up to 36"- 40" for your body comfort.
+            <button class="add-to-cart" onclick="addToCart('kurti', 700)">Add to Cart</button>
+        </div>
+    	</div>
+
+
+        <div class="cart">
+            <h2><mark>Shopping Cart Items</mark></h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="checksout()">Checkout</button>
+        </div>
+    </div>
+
+<script>
+let cartItems = [];
+
+function addToCart(product, price) {
+    cartItems.push({product, price});
+    updateCart();
+}
+
+function updateCart() {
+    let cartList = document.getElementById("cart-items");
+    let totalElement = document.getElementById("total");
+    let total = 0;
+
+    cartList.innerHTML = "";
+    cartItems.forEach(item => {
+        let listItem = document.createElement("li");
+        listItem.innerText = `${item.product} - $${item.price}`;
+        cartList.appendChild(listItem);
+        total += item.price;
+    });
+
+    totalElement.innerText = total;
+}
+
+
+
+
+// Add product and cart logic similar to the previous example
+
+function checksout() {
+    alert('Thank you for your purchase!');
+}
+
+</script>
+
+
+</body>
+</html>
